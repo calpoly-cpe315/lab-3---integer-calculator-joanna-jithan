@@ -59,28 +59,21 @@ ifadd:
       ldrb    w1, [x1]
       cmp     w4, w1
       b.ne    ifsub    
-      // call add
+      bl      intadd
       b       endif
 ifsub:
       ldr     x1, =sub
       ldrb    w1, [x1]
       cmp     w4, w1
       b.ne    ifmul    
-      // call sub
+      bl      intsub
       b       endif
 ifmul:
       ldr     x1, =mul
       ldrb    w1, [x1]
       cmp     w4, w1
-      b.ne    ifdiv    
-      // call mul
-      b       endif
-ifdiv:
-      ldr     x1, =div
-      ldrb    w1, [x1]
-      cmp     w4, w1
-      b.ne    endif    
-      // call div
+      b.ne    endif
+      bl      intmul
       b       endif
 endif:
       
@@ -113,8 +106,6 @@ sub:
    .byte    '-'
 mul:
    .byte    '*'
-div:
-   .byte    '/'
 again:
     .asciz  "Again? "
 enter1:

@@ -4,4 +4,3 @@
     .global intmul
 
 intmul:
-
