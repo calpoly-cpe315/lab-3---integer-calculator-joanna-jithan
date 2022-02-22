@@ -21,13 +21,15 @@ intadd:
     ret
 
 while:
-    //mov x1, x2 FIRST INTEGER (Ignore)
-    //mov x2, w3 SECOND INTEGER (Ignore)
+    mov x4, x2 //FIRST INTEGER
+    mov x5, x3 //SECOND INTEGER
     
-    and x4, x2, x3//FIRST INTEGER, SECOND INTEGER
-    eor x2, x2, x3//FIRST INTEGER, SECOND INTEGER
-
-    lsl x2, x4, #1
+    and x4, x4, x3//FIRST INTEGER, SECOND INTEGER
+    eor x5, x5, x2//FIRST INTEGER, SECOND INTEGER
+    
+    mov x2, x4
+    lsl x2,x2, #1
+    mov x3, x5
     
     cmp x2, #0
     bne while
