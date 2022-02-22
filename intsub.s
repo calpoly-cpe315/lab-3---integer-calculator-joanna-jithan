@@ -7,9 +7,8 @@ intsub:
 
     stp x29, x30, [sp,-16]!
     add x29, sp, 0
-    str x19, [sp,-8]!
-    str x20, [sp,-8]!
-    str x21, [sp,-8]!
+    stp x19, x20, [sp,-16]!
+    stp x21, x22, [sp,-16]!
 
     mov x19, x2
     mov x20, x3
@@ -27,9 +26,8 @@ intsub:
     bl intadd
     
 
-    ldr x19 ,[sp], 8
-    ldr x20 ,[sp], 8
-    ldr x21 ,[sp], 8
+    ldp x21,x22, [sp], 16
+    ldp x19,x20, [sp], 16
     ldp x29,x30, [sp], 16
     
     ret
