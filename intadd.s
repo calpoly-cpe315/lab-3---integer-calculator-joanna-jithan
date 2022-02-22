@@ -9,8 +9,8 @@ intadd:
     str x19, [sp,-8]!
     str x20, [sp,-8]!
 
-    mov x19, w2
-    mov x20, w3
+    mov x19, x2
+    mov x20, x3
     
     b while
 
@@ -21,13 +21,13 @@ intadd:
     ret
 
 while:
-    mov x1, w2 //FIRST INTEGER
-    mov x2, w3 //SECOND INTEGER
+    //mov x1, x2 FIRST INTEGER (Ignore)
+    //mov x2, w3 SECOND INTEGER (Ignore)
     
-    and x3, w2, w3//FIRST INTEGER, SECOND INTEGER
-    eorr x1, w2, w3//FIRST INTEGER, SECOND INTEGER
+    and x4, x2, x3//FIRST INTEGER, SECOND INTEGER
+    eor x2, x2, x3//FIRST INTEGER, SECOND INTEGER
 
-    lsl x2, x3, #1
+    lsl x2, x4, #1
     
     cmp x2, #0
     bne while
